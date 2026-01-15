@@ -1,7 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ldevoude <ldevoude@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/15 13:51:02 by ldevoude          #+#    #+#             */
+/*   Updated: 2026/01/15 13:55:02 by ldevoude         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/Fixed.hpp"
 #include <iostream>
 #include <cmath>
 
+// constructor
 Fixed::Fixed()
 : _fixed_point_number (0)
 {
@@ -9,6 +22,7 @@ Fixed::Fixed()
     return;
 }
 
+// constructor that fill fixedpointnumber with an integer
 Fixed::Fixed(const int value)
 {
     _fixed_point_number = value * (1 << nbr_fractional_bits);
@@ -16,6 +30,7 @@ Fixed::Fixed(const int value)
     return;
 }
 
+//constructor that fill fixedpointnumber with a float
 Fixed::Fixed(const float float_value)
 {
     _fixed_point_number = roundf(float_value * (1 << nbr_fractional_bits));
@@ -23,16 +38,24 @@ Fixed::Fixed(const float float_value)
     return;
 }
 
+// copy constructor
 Fixed::Fixed(Fixed const & src){
     //std::cout<<"Copy constructor called"<<std::endl;
     *this = src;
 }
 
+// copy assignement operator
 Fixed &Fixed::operator=(const Fixed &other){
     //std::cout << "Copy assignment operator called" << std::endl;
     if (this != &other)
         this->_fixed_point_number = other.getRawBits();
     return *this;
+}
+
+// destructor
+Fixed::~Fixed(){
+    //std::cout<<"Destructor called"<<std::endl;
+    return;
 }
 
 bool Fixed::operator>(const Fixed &other) const{
@@ -104,11 +127,6 @@ Fixed Fixed::operator--(int){
     Fixed tmp(*this);
     --this->_fixed_point_number;
     return tmp;
-}
-
-Fixed::~Fixed(){
-    //std::cout<<"Destructor called"<<std::endl;
-    return;
 }
 
 Fixed& Fixed::min(Fixed &one, Fixed &two){

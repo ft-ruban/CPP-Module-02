@@ -1,5 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ldevoude <ldevoude@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/15 10:58:31 by ldevoude          #+#    #+#             */
+/*   Updated: 2026/01/15 11:29:26 by ldevoude         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 #include "../includes/Fixed.hpp"
+
+//1) construct an object of class Fixed called a
+//2) b with an integer of value 10
+//3) c with a float of value 42.42
+//4) d use a cpy constructor on b
+//5) a is now 1234.4321
+//6) print value of a, b, c, d then the same but as an int
 
 int main( void ) {
 Fixed a;

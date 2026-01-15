@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ldevoude <ldevoude@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/15 13:50:56 by ldevoude          #+#    #+#             */
+/*   Updated: 2026/01/15 13:51:00 by ldevoude         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FIXED_HPP
 #define FIXED_HPP
 
@@ -10,22 +22,26 @@ class Fixed{
         Fixed( const float float_value);        //Constructor from float
         Fixed(Fixed const & src);               //copy constructor
         Fixed &operator=(const Fixed &other);   //copy assignement operator
+        ~Fixed( void );                         //Destructor
+
+        //overload for comparison operators
         bool operator>(const Fixed &other) const;
         bool operator<(const Fixed &other) const;
         bool operator>=(const Fixed &other) const;
         bool operator<=(const Fixed &other) const;
         bool operator==(const Fixed &other) const;
         bool operator!=(const Fixed &other) const;
+        //overload for arithmetic operators
         Fixed operator+(const Fixed &other) const;
         Fixed operator-(const Fixed &other) const;
         Fixed operator*(const Fixed &other) const;
         Fixed operator/(const Fixed &other) const;
+        //overload for increment/decrement operators
         Fixed &operator++(void);
         Fixed operator++(int);
         Fixed &operator--(void);
         Fixed operator--(int);
-        
-        ~Fixed( void );                         //Destructor
+    
 
         static Fixed& min(Fixed &one, Fixed &two);
         static const Fixed& min(const Fixed &one, const Fixed &two);
