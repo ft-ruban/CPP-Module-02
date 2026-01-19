@@ -6,7 +6,7 @@
 /*   By: ldevoude <ldevoude@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 09:49:15 by ldevoude          #+#    #+#             */
-/*   Updated: 2026/01/15 10:51:31 by ldevoude         ###   ########.fr       */
+/*   Updated: 2026/01/19 13:42:34 by ldevoude         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ class Fixed{
         Fixed(Fixed const & src);             // cpy constructor
         Fixed &operator=(const Fixed &other); // cpy assignement operator overload
         ~Fixed( void );                       // destructor
+        
         int getRawBits( void ) const;
         void setRawBits( int const raw );
     private:
