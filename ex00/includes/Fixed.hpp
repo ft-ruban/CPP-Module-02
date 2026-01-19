@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ldevoude <ldevoude@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/15 09:49:15 by ldevoude          #+#    #+#             */
+/*   Updated: 2026/01/19 13:42:34 by ldevoude         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FIXED_HPP
 #define FIXED_HPP
 
@@ -5,21 +17,16 @@
 
 class Fixed{
     public:
-        Fixed( void );
-        Fixed(Fixed const & src);
-        Fixed &operator=(const Fixed &other);
-        ~Fixed( void );
-        int getRawBits( void ) const{
-            std::cout<<"getRawBits member functon called"<<std::endl;
-            return(fixed_point_number);
-        }
-        void setRawBits( int const raw ){
-            std::cout<<"setRawBits member functon called"<<std::endl;
-            fixed_point_number = raw;
-        }
+        Fixed( void );                        // constructor
+        Fixed(Fixed const & src);             // cpy constructor
+        Fixed &operator=(const Fixed &other); // cpy assignement operator overload
+        ~Fixed( void );                       // destructor
+        
+        int getRawBits( void ) const;
+        void setRawBits( int const raw );
     private:
-        int fixed_point_number;
-        static const int nbr_fractional_bits =  8;
+        int _fixed_point_number;
+        static const int _nbr_fractional_bits =  8;
 
 };
 
