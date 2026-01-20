@@ -11,7 +11,7 @@ all: $(NAME)
 
 $(NAME): Makefile $(OBJS) | $(EXEC_DIR)
 	echo "$(PURPLE)Compiling $(NAME) in progress...$(RESET)"
-	$(CC) $(CFLAGS) $(CPP) $(CPPFLAGS) -o $(EXEC) $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $(EXEC) $(OBJS)
 	echo "$(GREEN)$(EXEC) completed successfully!$(RESET)"
 
 	echo "$(GREEN)"
@@ -26,7 +26,7 @@ $(NAME): Makefile $(OBJS) | $(EXEC_DIR)
 $(OBJS_DIR)%.o: $(SRCSDIR)%.cpp Makefile config.mk Now_were_talking.mk | $(OBJS_DIR)
 	mkdir -p $(dir $@)
 	echo "$(PURPLE)Compiling $<...$(RESET)"
-	$(CC) $(CFLAGS) $(CPP) $(CPPFLAGS) -c -o $@ $<	
+	$(CXX) $(CXXFLAGS) -c -o $@ $<	
 	echo "$(GREEN)$< completed successfully!$(RESET)"
 
 $(OBJS_DIR):

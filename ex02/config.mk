@@ -3,14 +3,13 @@ EXEC			:= bin/$(NAME)
 OBJS_DIR        := .objs/
 EXEC_DIR        := bin/
 
-CC              := c++ -Wall -Wextra -Werror
+CXX              := c++ -Wall -Wextra -Werror
 CPP      		:= -std=c++98
 MAKE            := make
 RM              := rm -f
 RM_DIR          := rm -rf
 
-CFLAGS          := -Wall -Wextra -Werror
-CPPFLAGS		:= -MMD -MP -I include/
+CXXFLAGS          := -Wall -Wextra -Werror -MMD -MP -I include/
 INC             := -I./includes
 
 PURPLE          := \033[1;35m]
