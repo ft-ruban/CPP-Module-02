@@ -6,7 +6,7 @@
 /*   By: ldevoude <ldevoude@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 13:51:02 by ldevoude          #+#    #+#             */
-/*   Updated: 2026/01/15 13:55:02 by ldevoude         ###   ########.fr       */
+/*   Updated: 2026/01/23 07:44:08 by ldevoude         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ Fixed::Fixed()
     return;
 }
 
-// constructor that fill fixedpointnumber with an integer
+// constructor from int that convert an int into a fixed point value
+// we move the bit 00000001 by the left so it give 2^8 (256) (1.0000.0000)
 Fixed::Fixed(const int value)
 {
     _fixed_point_number = value * (1 << nbr_fractional_bits);
@@ -30,7 +31,8 @@ Fixed::Fixed(const int value)
     return;
 }
 
-//constructor that fill fixedpointnumber with a float
+// constructor from float
+// we round the float value then multiply it by bit 0000.0001 moved by the left (so 2^8 = 256 = 1.0000.0000)
 Fixed::Fixed(const float float_value)
 {
     _fixed_point_number = roundf(float_value * (1 << nbr_fractional_bits));

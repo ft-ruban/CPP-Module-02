@@ -6,7 +6,7 @@
 /*   By: ldevoude <ldevoude@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 11:21:26 by ldevoude          #+#    #+#             */
-/*   Updated: 2026/01/15 11:30:27 by ldevoude         ###   ########.fr       */
+/*   Updated: 2026/01/23 07:43:04 by ldevoude         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include <cmath>
 
 //constructor
-
 Fixed::Fixed()
 : _fixed_point_number (0)
 {
@@ -23,7 +22,8 @@ Fixed::Fixed()
     return;
 }
 
-// constructor from int
+// constructor from int that convert an int into a fixed point value
+// we move the bit 00000001 by the left so it give 2^8 (256) (1.0000.0000)
 Fixed::Fixed(const int value)
 {
     _fixed_point_number = value * (1 << nbr_fractional_bits);
@@ -32,6 +32,7 @@ Fixed::Fixed(const int value)
 }
 
 // constructor from float
+// we round the float value then multiply it by bit 0000.0001 moved by the left (so 2^8 = 256 = 1.0000.0000)
 Fixed::Fixed(const float float_value)
 {
     _fixed_point_number = roundf(float_value * (1 << nbr_fractional_bits));
@@ -59,21 +60,23 @@ Fixed::~Fixed(){
     return;
 }
 
+// 1) return the private attribute _fixed_point_number
 int Fixed::getRawBits( void ) const{
-            return(_fixed_point_number);
+    return(_fixed_point_number);
 }
 
+// 1) set the private attribute with the sent parameter (raw)
 void Fixed::setRawBits( int const raw ){
-            _fixed_point_number = raw;
+    _fixed_point_number = raw;
 }
 
-//convert into a float
+//convert into a float and to return the right value we just do the opposite method (divide and not multiply)
 float Fixed::toFloat ( void ) const{
             float return_value = _fixed_point_number / (float) (1 << nbr_fractional_bits);
             return(return_value);
 }
 
-//convert into an integer
+//convert into an integer  and to return the right value we just do the opposite method (divide and not multiply)
 int Fixed::toInt ( void ) const{
             int return_value = _fixed_point_number / (1 << nbr_fractional_bits);
             return(return_value);
